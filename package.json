@@ -1,0 +1,21 @@
+{
+  "name": "reminder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:vicente-valls/reminder.git",
+  "author": "vicente-valls",
+  "license": "UNLICENSED",
+  "private": false,
+  "engines": {
+    "node": "^6.10.3"
+  },
+  "scripts": {
+    "test": "yarn run test-swagger",
+    "test-swagger": "gulp validate-swagger"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-swagger": "^1.0.1"
+  }
+}

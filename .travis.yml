@@ -1,0 +1,15 @@
+language: node_js
+
+node_js:
+    - "6.10.3"
+
+install:
+    - yarn install
+
+script:
+    - yarn test
+
+cache:
+    yarn: true
+    directories:
+        - node_modules

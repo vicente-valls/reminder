@@ -1,0 +1,161 @@
+swagger: '2.0'
+
+info:
+  version: '1.0'
+  title: Reminder API
+  description: |
+    Describes restful endpoints for the reminder api.
+    ## Structure
+
+    ### The Response
+    Each successful response (`200` status code) follows same generic schema:
+    ```json
+    {
+        'data': {
+            ...
+        }
+    }
+    ```
+
+    On the other hand either client or server errors (`4xx-5xx`) follow this
+    schema:
+    ```json
+    {
+        'errors': [{
+            ...
+        }]
+    }
+    ```
+
+    #### DATA
+    The `data` key contains the information client requested.
+
+    #### ERRORS
+    The `errors` key contains `array` of request errors. Validation errors (400) look like:
+    ```json
+    {
+        "errors": [
+            {
+                "validationErrors": [
+                    {
+                        "property": "method",
+                        "value": "ge",
+                        "constraints": {
+                            "length": "id must be longer than 2 characters"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    ```
+
+    While internal (5xx) errors:
+    ```json
+    {
+        "errors": [
+            {
+                "message": "something unexpected happened",
+            }
+        ]
+    }
+    ```
+
+################################################################################
+#                  Host, Base Path, Schemes and Content Types                  #
+################################################################################
+basePath: /v1
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+
+################################################################################
+#                                   Security                                   #
+################################################################################
+securityDefinitions:
+  XApiKey:
+      type: apiKey
+      description: |
+        The api key sent to client for the basic authentication
+      name: x-api-key
+      in: header
+
+################################################################################
+#                                   Paths                                      #
+################################################################################
+paths:
+  /reminder-task:
+    post:
+      description: Creates a reminder task
+      security:
+        - XApiKey: []
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/CreateTask'
+      responses:
+        201:
+          description: reminder task was created
+        400:
+          description: invalid create task payload
+          schema:
+            type: object
+            required:
+              - error
+            properties:
+              error:
+                $ref: '#/definitions/Error'
+        401:
+          description: invalid authentication for the operation
+          schema:
+            type: object
+            required:
+              - error
+            properties:
+              error:
+                $ref: '#/definitions/Error'
+        500:
+          description: some server side error
+          schema:
+            type: object
+            required:
+              - error
+            properties:
+              error:
+                $ref: '#/definitions/Error'
+
+################################################################################
+#                                 Definitions                                  #
+################################################################################
+definitions:
+  CreateTask:
+    type: object
+    required:
+      - url
+      - method
+    properties:
+      url:
+        type: string
+      method:
+        type: string
+        enum:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+      body:
+        type: object
+      headers:
+        type: object
+  Error:
+    type: object
+    required:
+      - message
+    properties:
+      message:
+        type: string
