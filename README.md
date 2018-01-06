@@ -7,8 +7,8 @@
 Reminder service is meant to be used to schedule HTTP requests.
 Reminder exposes a rest API to create reminder tasks.
 Reminder service is built using serverless framework using following components from AWS:
-* ApiGateway.
-* Lambda.
+* ApiGateway: used to expose rest API.
+* Lambda: used to handle HTTP requests from ApiGateway and handle SQS messages.
 * SQS: used to store and manage the reminder tasks.
 
 Following diagram shows interaction of such components.
