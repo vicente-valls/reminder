@@ -31,26 +31,7 @@ info:
     The `data` key contains the information client requested.
 
     #### ERRORS
-    The `errors` key contains `array` of request errors. Validation errors (400) look like:
-    ```json
-    {
-        "errors": [
-            {
-                "validationErrors": [
-                    {
-                        "property": "method",
-                        "value": "ge",
-                        "constraints": {
-                            "length": "id must be longer than 2 characters"
-                        }
-                    }
-                ]
-            }
-        ]
-    }
-    ```
-
-    While internal (5xx) errors:
+    The `errors` key contains `array` of request errors:
     ```json
     {
         "errors": [
