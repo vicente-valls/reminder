@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "target": "ES6",
+    "types": [
+      "reflect-metadata",
+      "node"
+    ],
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "module": "commonjs"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

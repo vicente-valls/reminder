@@ -1,0 +1,28 @@
+service: reminder
+
+frameworkVersion: "^1.25.0"
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: eu-west-1
+  profile: ${self:custom.env.profile}
+  stage: ${opt:stage, self:custom.env.stage}
+  environment:
+    ENVIRONMENT: ${self:provider.stage}
+  apiKeys:
+    - ${self:provider.stage}-reminder-api-key
+
+custom:
+  env: ${file(${opt:environment})}
+
+plugins:
+  - serverless-offline
+
+functions:
+  health:
+    handler: httpHandler.handle
+    events:
+     - http:
+        path: health
+        method: GET
+        integration: lambda-proxy
