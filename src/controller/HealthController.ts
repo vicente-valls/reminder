@@ -1,10 +1,8 @@
-import {controller, httpGet} from 'inversify-express-utils';
+import {controller, httpGet, interfaces} from 'inversify-express-utils';
 import {HealthResponse} from '../dto/HealthResponse';
-import {injectable} from 'inversify';
 
 @controller('/health')
-@injectable()
-export class HealthController {
+export class HealthController implements interfaces.Controller {
     @httpGet('/')
     public index(): HealthResponse {
         return new HealthResponse(true);

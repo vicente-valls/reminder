@@ -1,5 +1,6 @@
 import 'source-map-support/register';
 import 'reflect-metadata';
+import './src/dependency-injection/Loader';
 import * as serverless from 'serverless-http';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import container from './src/dependency-injection/inversify.config';
