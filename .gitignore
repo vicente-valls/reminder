@@ -9,6 +9,7 @@ node_modules
 
 # IDE folder
 .idea
+*.iml
 
 # .ts build files
 *.js
