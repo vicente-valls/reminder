@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "private": false,
   "engines": {
-    "node": "^6.10.3"
+    "node": "8.10"
   },
   "scripts": {
     "test": "yarn tsc && yarn run test-swagger && yarn run test-integration",

@@ -37,7 +37,7 @@ Any other status code (3XX-4XX-5XX...) or payloads will **not** be queued again 
 ## Requirements
 * yarn
 * nvm
-* node `v6.10.3`
+* node `v8.10`
 
 ## Installation
 ```
