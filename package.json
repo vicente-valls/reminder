@@ -15,23 +15,24 @@
     "test-integration": "./node_modules/.bin/serverless offline -c --environment=environments/test.yml --apiKey=abcd start --exec='yarn mocha --opts tests/mocha.opts ./tests/integration/**/*.js'"
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.18.0",
     "express": "^4.16.2",
     "inversify": "^4.9.0",
-    "inversify-express-utils": "^4.1",
+    "inversify-express-utils": "^6.1.0",
     "reflect-metadata": "^0.1.10",
     "serverless-http": "^1.5.2"
   },
   "devDependencies": {
     "@types/express": "^4.11.0",
-    "@types/node": "^9.3.0",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.11.7",
     "gulp": "^3.9.1",
     "gulp-swagger": "^1.0.1",
-    "mocha": "^4.1.0",
+    "mocha": "^5.2.0",
     "mocha-typescript": "^1.1.12",
     "serverless": "^1.25.0",
     "serverless-offline": "^3.16.0",
     "tslint": "^5.8.0",
-    "typescript": "^2.6.2"
+    "typescript": "^3.1.3"
   }
 }
