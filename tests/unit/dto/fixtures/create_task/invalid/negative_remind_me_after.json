@@ -1,0 +1,5 @@
+{
+  "url": "http://bar.foo",
+  "remindMeAfter": -1,
+  "method": "GET"
+}
