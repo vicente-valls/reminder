@@ -1,5 +1,16 @@
 {
-  "url": "http://bar.foo",
-  "remindMeAfter": 3,
-  "method": "x"
+  "createTask": {
+    "url": "http://bar.foo",
+    "remindMeAfter": 3,
+    "method": "x"
+  },
+  "expectedValidationResult": [
+    {
+      "title": "method must be a valid enum value",
+      "source": {
+        "pointer": "/method",
+        "parameter": null
+      }
+    }
+  ]
 }

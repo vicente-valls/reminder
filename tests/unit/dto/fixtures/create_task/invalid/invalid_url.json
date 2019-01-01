@@ -1,5 +1,16 @@
 {
-  "url": "foo",
-  "remindMeAfter": 3,
-  "method": "GET"
+  "createTask": {
+    "url": "foo",
+    "remindMeAfter": 3,
+    "method": "GET"
+  },
+  "expectedValidationResult": [
+    {
+      "title": "url must be an URL address",
+      "source": {
+        "pointer": "/url",
+        "parameter": null
+      }
+    }
+  ]
 }
