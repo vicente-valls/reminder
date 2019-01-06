@@ -1,0 +1,11 @@
+{
+  "url": "http://bar.foo",
+  "remindMeAfter": 3,
+  "method": "GET",
+  "body": {
+    "foo": "bar"
+  },
+  "headers": {
+    "Authorization": "Bearer 123"
+  }
+}

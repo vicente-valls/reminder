@@ -18,7 +18,7 @@ export class HealthCheckSpec extends BaseSpec {
     }
 
     @test 'should return 200'() {
-        let expectedResponseCode = 200;
+        const expectedResponseCode = 200;
         return this.httpClient.get('/health')
         .then((response) => {
             assert.equal(response.status, expectedResponseCode);
