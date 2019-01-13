@@ -1,0 +1,21 @@
+{
+  "createTask": {
+    "url": "http://bar.foo",
+    "remindMeAfter": -1,
+    "method": "GET"
+  },
+  "response": {
+    "statusCode": 400,
+    "body": {
+      "errors":  [
+        {
+          "title": "remindMeAfter must not be less than 0",
+          "source": {
+            "pointer": "/remindMeAfter",
+            "parameter": null
+          }
+        }
+      ]
+    }
+  }
+}

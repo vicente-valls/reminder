@@ -1,0 +1,59 @@
+{
+  "createTask": {"foo": "bar"},
+  "response": {
+    "statusCode": 400,
+    "body": {
+      "errors":  [
+        {
+          "title": "url must be an URL address",
+          "source": {
+            "pointer": "/url",
+            "parameter": null
+          }
+        },
+        {
+          "title": "url should not be empty",
+          "source": {
+            "pointer": "/url",
+            "parameter": null
+          }
+        },
+        {
+          "title": "method must be a valid enum value",
+          "source": {
+            "pointer": "/method",
+            "parameter": null
+          }
+        },
+        {
+          "title": "method should not be empty",
+          "source": {
+            "pointer": "/method",
+            "parameter": null
+          }
+        },
+        {
+          "title": "remindMeAfter must not be greater than 43200",
+          "source": {
+            "pointer": "/remindMeAfter",
+            "parameter": null
+          }
+        },
+        {
+          "title": "remindMeAfter must not be less than 0",
+          "source": {
+            "pointer": "/remindMeAfter",
+            "parameter": null
+          }
+        },
+        {
+          "title": "remindMeAfter should not be empty",
+          "source": {
+            "pointer": "/remindMeAfter",
+            "parameter": null
+          }
+        }
+      ]
+    }
+  }
+}

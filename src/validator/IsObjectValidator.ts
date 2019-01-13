@@ -11,8 +11,8 @@ export function IsObject(validationOptions?: ValidationOptions) {
                 validate(value: any) {
                     return typeof value === 'object';
                 },
-                defaultMessage: defaultMessage
-            }
+                defaultMessage: defaultMessage,
+            },
         });
     };
 }

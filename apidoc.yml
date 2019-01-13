@@ -36,7 +36,7 @@ info:
     {
         "errors": [
             {
-                "message": "something unexpected happened",
+                "title": "something unexpected happened",
             }
         ]
     }
@@ -68,7 +68,7 @@ securityDefinitions:
 #                                   Paths                                      #
 ################################################################################
 paths:
-  /reminder-task:
+  /task:
     post:
       description: Creates a reminder task
       security:
@@ -79,26 +79,16 @@ paths:
           schema:
             $ref: '#/definitions/CreateTask'
       responses:
-        201:
+        204:
           description: reminder task was created
         400:
-          description: invalid create task payload
+          description: invalid payload
           schema:
-            type: object
-            required:
-              - error
-            properties:
-              error:
-                $ref: '#/definitions/Error'
+            $ref: '#/definitions/ErrorResponse'
         401:
-          description: invalid authentication for the operation
+          description: not authenticated client
           schema:
-            type: object
-            required:
-              - error
-            properties:
-              error:
-                $ref: '#/definitions/Error'
+            $ref: '#/definitions/ErrorResponse'
         500:
           description: some server side error
           schema:
@@ -139,10 +129,36 @@ definitions:
         type: object
       headers:
         type: object
+  ErrorResponse:
+    type: object
+    required:
+      - errors
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/Error'
   Error:
     type: object
     required:
-      - message
+      - title
     properties:
-      message:
+      title:
         type: string
+        description: |
+          A short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of
+          the problem, except for purposes of localization.
+      source:
+        $ref: '#/definitions/Source'
+        description: An object containing references to the source of the error.
+  Source:
+    type: object
+    properties:
+      pointer:
+        type: string
+        description: |
+          A JSON Pointer [RFC6901] to the associated entity in the request document
+          [e.g. "/data" for a primary data object, or "/data/attributes/title" for a specific attribute].
+      parameter:
+        type: string
+        description: A string indicating which URI query parameter caused the error.

@@ -1,0 +1,21 @@
+{
+  "createTask": {
+    "url": "http://bar.foo",
+    "remindMeAfter": 3,
+    "method": "x"
+  },
+  "response": {
+    "statusCode": 400,
+    "body": {
+      "errors":  [
+        {
+          "title": "method must be a valid enum value",
+          "source": {
+            "pointer": "/method",
+            "parameter": null
+          }
+        }
+      ]
+    }
+  }
+}

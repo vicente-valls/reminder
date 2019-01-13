@@ -1,6 +1,17 @@
 {
-  "url": "http://bar.foo",
-  "remindMeAfter": 43200,
-  "method": "GET",
-  "body": ""
+  "createTask": {
+    "url": "http://bar.foo",
+    "remindMeAfter": 43200,
+    "method": "GET",
+    "body": ""
+  },
+  "expectedValidationResult": [
+    {
+      "title": "CreateTask.body is not valid",
+      "source": {
+        "pointer": "/body",
+        "parameter": null
+      }
+    }
+  ]
 }

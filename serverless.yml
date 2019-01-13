@@ -1,6 +1,6 @@
 service: reminder
 
-frameworkVersion: "^1.32.0"
+frameworkVersion: "^1.35.1"
 provider:
   name: aws
   runtime: nodejs8.10
@@ -10,7 +10,7 @@ provider:
   environment:
     ENVIRONMENT: ${self:provider.stage}
   apiKeys:
-    - ${self:provider.stage}-reminder-api-key
+  - x-api-key
 
 custom:
   env: ${file(${opt:environment})}
@@ -26,3 +26,11 @@ functions:
         path: health
         method: GET
         integration: lambda-proxy
+  task:
+    handler: httpHandler.handle
+    events:
+    - http:
+        path: /v1/task
+        method: POST
+        integration: lambda-proxy
+        private: true

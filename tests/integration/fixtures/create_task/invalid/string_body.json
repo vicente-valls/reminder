@@ -1,0 +1,22 @@
+{
+  "createTask": {
+    "url": "http://bar.foo",
+    "remindMeAfter": 43200,
+    "method": "GET",
+    "body": ""
+  },
+  "response": {
+    "statusCode": 400,
+    "body": {
+      "errors":  [
+        {
+          "title": "CreateTask.body is not valid",
+          "source": {
+            "pointer": "/body",
+            "parameter": null
+          }
+        }
+      ]
+    }
+  }
+}

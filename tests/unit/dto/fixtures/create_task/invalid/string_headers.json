@@ -1,6 +1,17 @@
 {
-  "url": "http://bar.foo",
-  "remindMeAfter": 43200,
-  "method": "GET",
-  "headers": ""
+  "createTask": {
+    "url": "http://bar.foo",
+    "remindMeAfter": 43200,
+    "method": "GET",
+    "headers": ""
+  },
+  "expectedValidationResult": [
+    {
+      "title": "CreateTask.headers is not valid",
+      "source": {
+        "pointer": "/headers",
+        "parameter": null
+      }
+    }
+  ]
 }
