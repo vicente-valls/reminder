@@ -1,0 +1,21 @@
+{
+  "createTask": {
+    "url": "foo",
+    "remindMeAfter": 3,
+    "method": "GET"
+  },
+  "response": {
+    "statusCode": 400,
+    "body": {
+      "errors":  [
+        {
+          "title": "url must be an URL address",
+          "source": {
+            "pointer": "/url",
+            "parameter": null
+          }
+        }
+      ]
+    }
+  }
+}

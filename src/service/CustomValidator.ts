@@ -1,5 +1,5 @@
 import SYMBOLS from '../dependency-injection/Symbols';
-import { provide } from "inversify-binding-decorators";
+import { provide } from 'inversify-binding-decorators';
 import {inject} from 'inversify';
 import {ValidationError, Validator} from 'class-validator';
 import {ErrorItem} from '../error/ErrorItem';
@@ -24,10 +24,12 @@ export class CustomValidator {
     ): ErrorItem[] {
         validationErrors.forEach((validationError) => {
             for (const constraintType in validationError.constraints) {
-                const title = validationError.constraints[constraintType];
-                const pointer = errorPointerPrefix + validationError.property;
-                const source = new Source(pointer, null);
-                errorItems.push(new ErrorItem(title, source));
+                if (validationError.constraints.hasOwnProperty(constraintType)) {
+                    const title = validationError.constraints[constraintType];
+                    const pointer = errorPointerPrefix + validationError.property;
+                    const source = new Source(pointer, null);
+                    errorItems.push(new ErrorItem(title, source));
+                }
             }
             if (validationError.children) {
                 return this.mapValidationErrors(

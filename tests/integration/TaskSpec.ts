@@ -27,7 +27,7 @@ export class TaskSpec extends BaseSpec {
         return this.unAuthenticatedApiClient.post(TaskSpec.PATH)
         .then(() => {
             // @todo replace console with logging class
-            console.error('unexpected resolved promise');
+            // @todo log error
             assert.ok(false);
         })
         .catch((error: AxiosError) => {
@@ -39,16 +39,61 @@ export class TaskSpec extends BaseSpec {
         const fixture: IIntegrationFixture = require(
             './fixtures/create_task/invalid/invalid_empty_create_task.json'
         );
+        return this.assertInvalidPayloads(fixture);
+    }
+
+    @test 'should return 400 if invalid method'() {
+        const fixture: IIntegrationFixture = require(
+            './fixtures/create_task/invalid/invalid_method.json'
+        );
+        return this.assertInvalidPayloads(fixture);
+    }
+
+    @test 'should return 400 if invalid url'() {
+        const fixture: IIntegrationFixture = require(
+            './fixtures/create_task/invalid/invalid_url.json'
+        );
+        return this.assertInvalidPayloads(fixture);
+    }
+
+    @test 'should return 400 if negative remind me after'() {
+        const fixture: IIntegrationFixture = require(
+            './fixtures/create_task/invalid/negative_remind_me_after.json'
+        );
+        return this.assertInvalidPayloads(fixture);
+    }
+
+    @test 'should return 400 if string body'() {
+        const fixture: IIntegrationFixture = require(
+            './fixtures/create_task/invalid/string_body.json'
+        );
+        return this.assertInvalidPayloads(fixture);
+    }
+
+    @test 'should return 400 if string headers'() {
+        const fixture: IIntegrationFixture = require(
+            './fixtures/create_task/invalid/string_headers.json'
+        );
+        return this.assertInvalidPayloads(fixture);
+    }
+
+    @test 'should return 400 if too big remind me after'() {
+        const fixture: IIntegrationFixture = require(
+            './fixtures/create_task/invalid/too_big_remind_me_after.json'
+        );
+        return this.assertInvalidPayloads(fixture);
+    }
+
+    private assertInvalidPayloads(fixture: IIntegrationFixture): Promise<void> {
         return this.authenticatedApiClient.post(TaskSpec.PATH, fixture.createTask)
         .then(() => {
             // @todo replace console with logging class
-            console.error('unexpected resolved promise');
+            // @todo log error
             assert.ok(false);
         })
         .catch((error: AxiosError) => {
             assert.strictEqual(error.response.status, fixture.response.statusCode);
             assert.deepEqual(error.response.data, fixture.response.body);
-        })
+        });
     }
-    // @todo add more tests
 }

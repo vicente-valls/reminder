@@ -1,11 +1,11 @@
 import {IsEnum, IsNotEmpty, IsOptional, IsUrl, Max, Min} from 'class-validator';
 import {IsObject} from '../validator/IsObjectValidator';
 export enum HttpMethods {
-    GET = "GET",
-    POST = "POST",
-    PUT = "PUT",
-    PATCH = "PATCH",
-    DELETE = "DELETE"
+    GET = 'GET',
+    POST = 'POST',
+    PUT = 'PUT',
+    PATCH = 'PATCH',
+    DELETE = 'DELETE',
 }
 export class CreateTask {
     @IsNotEmpty()

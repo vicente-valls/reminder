@@ -10,13 +10,15 @@
     "node": "8.10"
   },
   "scripts": {
-    "test": "yarn tsc && yarn run test-swagger && yarn run test-unit && yarn run test-integration",
+    "test": "yarn tsc && yarn run test-swagger && yarn test-tslint && yarn run test-unit && yarn run test-integration",
+    "test-tslint": "tslint \"./**/*.ts\" -e \"./node_modules/**/*\"",
     "test-swagger": "gulp validate-swagger",
     "test-unit": "ENVIRONMENT=test yarn mocha --opts tests/mocha.opts \"./tests/unit/**/*Spec.js\"",
     "start": "./node_modules/.bin/serverless offline -c --useSeparateProcesses --environment=environments/test.yml --apiKey=abcd start",
     "test-integration": "./node_modules/.bin/serverless offline -c --useSeparateProcesses --environment=environments/test.yml --apiKey=abcd start --exec='yarn mocha --opts tests/mocha.opts ./tests/integration/**/*.js'"
   },
   "dependencies": {
+    "aws-lambda": "^0.1.2",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "class-transformer": "^0.2.0",
@@ -41,6 +43,6 @@
     "serverless": "^1.35.1",
     "serverless-offline": "^3.31.3",
     "tslint": "^5.8.0",
-    "typescript": "^3.1.3"
+    "typescript": "^3.2.2"
   }
 }

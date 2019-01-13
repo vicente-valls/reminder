@@ -8,4 +8,4 @@ import '../controller/V1TaskController';
 import '../service/TaskService';
 import '../service/CustomValidator';
 import '../service/ParamConverter';
-
+import '../infrastructure/SqsTaskRepository';
