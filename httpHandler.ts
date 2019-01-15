@@ -7,15 +7,17 @@ import { InversifyExpressServer } from 'inversify-express-utils';
 import * as bodyparser from 'body-parser';
 import * as express from 'express';
 import {APIGatewayEvent, Context, ProxyCallback} from 'aws-lambda';
+import SYMBOLS from './src/dependency-injection/Symbols';
+import {Logger} from 'winston';
 
 const server = new InversifyExpressServer(container);
 server.setConfig((application) => {
     application.use(bodyparser.json());
 });
 server.setErrorConfig((application) => {
-    application.use((_err, _req, res, next) => {
-        // @todo replace with logging https://github.com/inversify/inversify-express-utils#setconfigconfigfn
-        // @todo log error
+    application.use((err, _req, res, next) => {
+        const logger = container.get<Logger>(SYMBOLS.Logger);
+        logger.error({error: {message: err.message, stack: err.stack}});
         res.status(500).send({
             error: {
                 'message': 'internal error',

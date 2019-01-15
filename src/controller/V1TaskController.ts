@@ -12,12 +12,15 @@ import {inject} from 'inversify';
 import {container} from '../dependency-injection/inversify.config';
 import {IRequest} from '../../httpHandler';
 import {TaskId} from '../model/TaskId';
+import {Logger} from 'winston';
 
 @controller('/v1/task')
 export class V1TaskController implements interfaces.Controller {
 
     constructor(
-        @inject(SYMBOLS.TaskService) private taskService: TaskService) {
+        @inject(SYMBOLS.TaskService) private taskService: TaskService,
+        @inject(SYMBOLS.Logger) private logger: Logger
+    ) {
     }
 
     @httpPost('/', container.get<ParamConverter>(SYMBOLS.ParamConverter).convert(CreateTask))
@@ -31,7 +34,7 @@ export class V1TaskController implements interfaces.Controller {
             return res.status(204);
         })
         .catch((error) => {
-            // @todo log error
+            this.logger.error({error: error});
             return this.handleError(res, error);
         });
     }
