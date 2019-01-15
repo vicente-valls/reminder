@@ -5,6 +5,8 @@ const SYMBOLS = {
     ClassValidator: Symbol('ClassValidator'),
     TaskService: Symbol('TaskService'),
     CustomValidator: Symbol('CustomValidator'),
+    LoggerFactory: Symbol('LoggerFactory'),
+    Logger: Symbol('Logger'),
 };
 
 export default SYMBOLS;

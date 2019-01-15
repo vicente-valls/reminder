@@ -9,3 +9,5 @@ import '../service/TaskService';
 import '../service/CustomValidator';
 import '../service/ParamConverter';
 import '../infrastructure/SqsTaskRepository';
+import '../service/LoggerFactory';
+import 'winston';

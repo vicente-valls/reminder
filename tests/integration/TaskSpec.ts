@@ -26,8 +26,7 @@ export class TaskSpec extends BaseSpec {
     @test 'should return 403 if sending not valid token'() {
         return this.unAuthenticatedApiClient.post(TaskSpec.PATH)
         .then(() => {
-            // @todo replace console with logging class
-            // @todo log error
+            this.logger.error('unexpected resolved promise');
             assert.ok(false);
         })
         .catch((error: AxiosError) => {
@@ -87,8 +86,7 @@ export class TaskSpec extends BaseSpec {
     private assertInvalidPayloads(fixture: IIntegrationFixture): Promise<void> {
         return this.authenticatedApiClient.post(TaskSpec.PATH, fixture.createTask)
         .then(() => {
-            // @todo replace console with logging class
-            // @todo log error
+            this.logger.error('unexpected resolved promise');
             assert.ok(false);
         })
         .catch((error: AxiosError) => {
