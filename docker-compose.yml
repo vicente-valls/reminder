@@ -1,0 +1,9 @@
+version: '3'
+services:
+  fake-sqs:
+    container_name: reminder-elasticmq
+    ports:
+      - 9324:9324
+    image: s12v/elasticmq
+    volumes:
+      - ./elasticmq_configs:/etc/elasticmq

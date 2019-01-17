@@ -31,7 +31,7 @@ export class V1TaskController implements interfaces.Controller {
     ): Promise<void> {
         return this.taskService.createTask(createTask, new TaskId(req.requestId))
         .then(() => {
-            return res.status(204);
+            return res.sendStatus(204);
         })
         .catch((error) => {
             this.logger.error({error: error});
