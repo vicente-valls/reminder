@@ -15,7 +15,7 @@
     "test-swagger": "gulp validate-swagger",
     "test-unit": "ENVIRONMENT=test yarn mocha --opts tests/mocha.opts \"./tests/unit/**/*Spec.js\"",
     "start": "./node_modules/.bin/serverless offline -c --useSeparateProcesses --environment=environments/development.yml --apiKey=abcd start",
-    "test-integration": "./node_modules/.bin/serverless offline -c --useSeparateProcesses --environment=environments/test.yml --apiKey=abcd start --exec='yarn mocha --opts tests/mocha.opts ./tests/integration/**/*.js'"
+    "test-integration": "ENVIRONMENT=test SQS_REGION='eu-west-1' SQS_ACCESS_KEY_ID='foo' SQS_ACCESS_SECRET='bar' ./node_modules/.bin/serverless offline -c --useSeparateProcesses --environment=environments/test.yml --apiKey=abcd start --exec='yarn mocha --opts tests/mocha.opts ./tests/integration/**/*.js'"
   },
   "dependencies": {
     "aws-lambda": "^0.1.2",

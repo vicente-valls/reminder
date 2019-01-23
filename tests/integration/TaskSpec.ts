@@ -3,6 +3,7 @@ import {BaseSpec} from './BaseSpec';
 import * as assert from 'assert';
 import {AxiosError} from 'axios';
 import {CreateTask} from '../../src/dto/CreateTask';
+import * as Promise from 'bluebird';
 
 interface IIntegrationFixture {
     createTask: Object|CreateTask;
@@ -15,8 +16,8 @@ interface IIntegrationFixture {
 @suite
 export class TaskSpec extends BaseSpec {
     static readonly PATH = 'task';
-    before(): void {
-        super.before();
+    before(): Promise<void> {
+        return super.before().then(() => null);
     }
 
     after() {
@@ -94,4 +95,5 @@ export class TaskSpec extends BaseSpec {
             assert.deepEqual(error.response.data, fixture.response.body);
         });
     }
+    // @todo check sqs with empty or message
 }

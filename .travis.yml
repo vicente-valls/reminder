@@ -3,8 +3,12 @@ language: node_js
 node_js:
     - "8.10"
 
+services:
+    - docker
+
 install:
     - yarn install
+    - docker-compose up -d
 
 script:
     - yarn test

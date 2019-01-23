@@ -28,7 +28,7 @@ container.bind<ISqsConfig>(SYMBOLS.SqsConfig).toConstantValue(
         region: process.env.SQS_REGION,
         queueUrl: process.env.SQS_URL,
         accessKeyId: process.env.SQS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.SQS_ACCESS_KEY_SECRET,
+        secretAccessKey: process.env.SQS_ACCESS_SECRET,
     }
 );
 container.bind<SqsClientFactory>(SYMBOLS.SqsClientFactory).to(SqsClientFactory);

@@ -38,11 +38,14 @@ Any other status code (3XX-4XX-5XX...) or payloads will **not** be queued again 
 * yarn
 * nvm
 * node `v8.10`
+* docker
+* docker-compose
 
 ## Installation
 ```
 $ nvm use
 $ yarn install
+$ docker-compose up -d
 ```
 
 ## Testing
