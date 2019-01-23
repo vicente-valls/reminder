@@ -1,2 +1,6 @@
 stage: test
 profile: ci-reminder
+sqs_url: http://localhost:9324/queue/test_reminder
+sqs_region: eu-west-1
+sqs_access_key_id: abc
+sqs_access_secret: secret

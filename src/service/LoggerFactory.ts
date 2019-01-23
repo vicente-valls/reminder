@@ -1,11 +1,12 @@
-import {Logger} from 'winston';
 import * as winston from 'winston';
+import {Logger} from 'winston';
 import SYMBOLS from '../dependency-injection/Symbols';
-import { provide } from 'inversify-binding-decorators';
+import {provide} from 'inversify-binding-decorators';
+import {Environment} from '../model/Environment';
 
 @provide(SYMBOLS.LoggerFactory)
 export class LoggerFactory {
-    create(environment: string): Logger {
+    create(environment: Environment): Logger {
         let logger = winston.createLogger({
             transports: [
                 new winston.transports.Console({
@@ -18,7 +19,7 @@ export class LoggerFactory {
                 }),
             ],
         });
-        if (environment === 'production') {
+        if (environment === Environment.prod) {
             logger = winston.createLogger({
                 transports: [
                     new winston.transports.Console({
@@ -30,7 +31,7 @@ export class LoggerFactory {
                     }),
                 ],
             });
-        } else if (environment === 'test') {
+        } else if (environment === Environment.test) {
             logger = winston.createLogger({
                 transports: [
                     new winston.transports.Console({

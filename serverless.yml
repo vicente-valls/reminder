@@ -9,6 +9,10 @@ provider:
   stage: ${opt:stage, self:custom.env.stage}
   environment:
     ENVIRONMENT: ${self:provider.stage}
+    SQS_URL: ${self:custom.env.sqs_url}
+    SQS_REGION: ${self:custom.env.sqs_region}
+    SQS_ACCESS_KEY_ID: ${self:custom.env.sqs_access_key_id}
+    SQS_ACCESS_SECRET: ${self:custom.env.sqs_access_secret}
   apiKeys:
   - x-api-key
 

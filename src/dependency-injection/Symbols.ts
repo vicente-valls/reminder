@@ -7,6 +7,9 @@ const SYMBOLS = {
     CustomValidator: Symbol('CustomValidator'),
     LoggerFactory: Symbol('LoggerFactory'),
     Logger: Symbol('Logger'),
+    SqsConfig: Symbol('SqsConfig'),
+    SqsClientFactory: Symbol('SqsClientFactory'),
+    SqsClient: Symbol('SqsClient'),
 };
 
 export default SYMBOLS;
