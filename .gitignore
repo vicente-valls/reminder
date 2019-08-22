@@ -15,3 +15,7 @@ node_modules
 *.js
 *.js.map
 !gulpfile.js
+
+coverage/*
+!coverage/.gitkeep
+.nyc_output

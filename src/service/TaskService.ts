@@ -26,15 +26,4 @@ export class TaskService {
             return this.taskRepository.add(task);
         });
     }
-
-    public foo(createTask: CreateTask, taskId: TaskId): Promise<void> {
-        return Promise.try(() => {
-            this.customValidator.validateSync(createTask);
-            const task = new Task(
-                taskId, createTask.url, createTask.method, createTask.remindMeAfter,
-                (createTask.body) ? createTask.body : null, (createTask.headers) ? createTask.headers : null
-            );
-            return this.taskRepository.add(task);
-        });
-    }
 }

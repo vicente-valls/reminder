@@ -10,8 +10,9 @@
     "node": "8.10"
   },
   "scripts": {
-    "test": "yarn tsc && yarn run test-swagger && yarn test-tslint && yarn run test-unit && yarn run test-integration",
-    "test-tslint": "tslint \"./**/*.ts\" -e \"./node_modules/**/*\"",
+    "coverage": "nyc --reporter=lcovonly yarn run test-unit",
+    "test": "yarn tsc && yarn run test-swagger && yarn test-tslint && yarn run coverage && yarn run test-integration",
+    "test-tslint": "tslint \"./**/*.ts\" -e \"./node_modules/**/*\" -t json -o tslint-report.json",
     "test-swagger": "gulp validate-swagger",
     "test-unit": "ENVIRONMENT=test yarn mocha --opts tests/mocha.opts \"./tests/unit/**/*Spec.js\"",
     "start": "./node_modules/.bin/serverless offline -c --useSeparateProcesses --environment=environments/development.yml --apiKey=abcd start",
@@ -42,6 +43,7 @@
     "mocha": "^5.2.0",
     "mocha-testdata": "^1.2.0",
     "mocha-typescript": "^1.1.12",
+    "nyc": "^14.1.1",
     "serverless": "^1.35.1",
     "serverless-offline": "^3.31.3",
     "tslint": "^5.8.0",

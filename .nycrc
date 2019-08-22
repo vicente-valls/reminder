@@ -1,0 +1,18 @@
+{
+  "cache": false,
+  "extension": [
+    ".ts"
+  ],
+  "include": [
+    "**/*.js",
+    "**/*.ts"
+  ],
+  "exclude": [
+    "coverage/**",
+    "node_modules/**",
+    "**/*.d.ts",
+    "**/*.test.ts"
+  ],
+  "sourceMap": true,
+  "all": true
+}
