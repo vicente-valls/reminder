@@ -10,8 +10,10 @@
     "node": "8.10"
   },
   "scripts": {
-    "test": "yarn tsc && yarn run test-swagger && yarn test-tslint && yarn run test-unit && yarn run test-integration",
-    "test-tslint": "tslint \"./**/*.ts\" -e \"./node_modules/**/*\"",
+    "coverage": "nyc yarn run test-unit",
+    "posttest": "yarn run coverage",
+    "test": "yarn tsc && yarn run test-swagger && yarn test-tslint && yarn run coverage && yarn run test-integration",
+    "test-tslint": "tslint \"./**/*.ts\" -e \"./node_modules/**/*\" -t json -o tslint-report.json",
     "test-swagger": "gulp validate-swagger",
     "test-unit": "ENVIRONMENT=test yarn mocha --opts tests/mocha.opts \"./tests/unit/**/*Spec.js\"",
     "start": "./node_modules/.bin/serverless offline -c --useSeparateProcesses --environment=environments/development.yml --apiKey=abcd start",
@@ -32,6 +34,20 @@
     "serverless-http": "^1.8.0",
     "winston": "^3.1.0"
   },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "report-dir": "./reports/lcov"
+  },
   "devDependencies": {
     "@types/express": "^4.11.0",
     "@types/mocha": "^5.2.5",
@@ -42,6 +58,7 @@
     "mocha": "^5.2.0",
     "mocha-testdata": "^1.2.0",
     "mocha-typescript": "^1.1.12",
+    "nyc": "^14.1.1",
     "serverless": "^1.35.1",
     "serverless-offline": "^3.31.3",
     "tslint": "^5.8.0",
