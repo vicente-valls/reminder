@@ -10,7 +10,8 @@
     "node": "8.10"
   },
   "scripts": {
-    "coverage": "nyc --reporter=lcovonly yarn run test-unit",
+    "coverage": "nyc yarn run test-unit",
+    "posttest": "yarn run coverage",
     "test": "yarn tsc && yarn run test-swagger && yarn test-tslint && yarn run coverage && yarn run test-integration",
     "test-tslint": "tslint \"./**/*.ts\" -e \"./node_modules/**/*\" -t json -o tslint-report.json",
     "test-swagger": "gulp validate-swagger",
@@ -32,6 +33,20 @@
     "reflect-metadata": "^0.1.12",
     "serverless-http": "^1.8.0",
     "winston": "^3.1.0"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "report-dir": "./reports/lcov"
   },
   "devDependencies": {
     "@types/express": "^4.11.0",

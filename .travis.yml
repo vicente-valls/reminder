@@ -1,4 +1,9 @@
 language: node_js
+addons:
+    sonarcloud:
+        organization: vicente-valls
+        token:
+            secure: "b+gwhz1/AX7M26GaYrbjeSObYs4AGTHwIKtMG8ep26RFOgIUrjL3n8u9+fcRJQQXSzXTz4pjeHKEWsMfY1CUA3yBllD8W0oelt38LK3EIC8Tb7KfiPgkTkIptwsZvOa6ecmbKj1XgsNPzH8DtSpNTcAQhBNf6FAHoq61YLD3L1ITDgODUmwCWqTx+cgwmrY6tNtyRIfPEBi0X4zXpM6YXX1FNJ8+Z+x2hAl2j+JZXPwpk3ztTtO97DnQZIrKYQCiMcMtABrcyz/N01yICkZYXRaP/SDNHGTQLi0QpiPaadKkgzOLXiTyT24mmZG0YHrifjYl+0l4hXJokMXFC+bRFfld5kl/HEPyyx6FVEM1L2+YX9rQQeBCgSlGEYJA0E4ou2enC3d5gwQ0gzQ6wH+GS8WncrIXy1DQBVhph2rkVHzr7eTO93PgT3aylmQf9vFNhG+hI48IGKn7tdfY3JVVPwRR43lQlQTlgi2QAt8UZ2UtDQovACoXExQQTw7QNJaaZ+xec0e5+TEeXsg3tff9QGE2eyt9Kvb8dHaGcMsMSkuEX5EgVCgfJKY4McVm/vSoFRdq59amK6VthNyqU/ZGLRLcx+5qO0CMUM2bR4Am2y7Rhy/aLb107DvSmCebcI+xed3nHV4sEeSDf8YRXjVCOURO3nhae4cimrykoXNecg0="
 
 node_js:
     - "8.10"
@@ -12,8 +17,10 @@ install:
 
 script:
     - yarn test
+    - sonar-scanner
 
 cache:
     yarn: true
     directories:
         - node_modules
+        - "$HOME/.sonar/cache"
