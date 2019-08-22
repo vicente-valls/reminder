@@ -7,4 +7,8 @@ export class HealthController implements interfaces.Controller {
     public index(): HealthResponse {
         return new HealthResponse(true);
     }
+    @httpGet('/')
+    public index2(): HealthResponse {
+        return new HealthResponse(true);
+    }
 }
