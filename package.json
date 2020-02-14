@@ -18,7 +18,7 @@
     "test-integration": "ENVIRONMENT=test SQS_REGION='eu-west-1' SQS_ACCESS_KEY_ID='foo' SQS_ACCESS_SECRET='bar' ./node_modules/.bin/serverless offline -c --useSeparateProcesses --environment=environments/test.yml --apiKey=abcd start --exec='yarn mocha --opts tests/mocha.opts ./tests/integration/**/*.js'"
   },
   "dependencies": {
-    "aws-lambda": "^0.1.2",
+    "aws-lambda": "^1.0.5",
     "aws-sdk": "^2.389.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
